@@ -1,0 +1,10 @@
+{
+    "pylint.path": [
+        ".venv/Scripts/python",
+        "-m",
+        "pylint"
+    ],
+    "files.exclude": {
+        ".venv": true
+    }
+}
