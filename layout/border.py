@@ -18,19 +18,19 @@ class Example(wx.Frame):
     def __init__(self, parent, title):
         super(Example, self).__init__(parent, title=title)
 
-        self.InitUI()
+        self.init_ui()
         self.Center()
 
-    def InitUI(self):
+    def init_ui(self):
         panel = wx.Panel(self)
 
         panel.SetBackgroundColour('#4f5049')
         vbox = wx.BoxSizer(wx.VERTICAL)
 
-        midPan = wx.Panel(panel)
-        midPan.SetBackgroundColour('#ededed')
+        mid_pan = wx.Panel(panel)
+        mid_pan.SetBackgroundColour('#ededed')
 
-        vbox.Add(midPan, wx.ID_ANY, wx.EXPAND | wx.ALL, 20)
+        vbox.Add(mid_pan, wx.ID_ANY, wx.EXPAND | wx.ALL, 20)
         panel.SetSizer(vbox)
 
 
