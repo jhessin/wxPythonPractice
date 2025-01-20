@@ -12,6 +12,8 @@ last modified: July 2020
 
 import wx
 
+from First_steps.moving import Example
+
 
 class ChangeDepthDialog(wx.Dialog):
 
@@ -23,7 +25,6 @@ class ChangeDepthDialog(wx.Dialog):
         self.SetTitle('Change Color Depth')
 
     def init_ui(self):
-
         pnl = wx.Panel(self)
         vbox = wx.BoxSizer(wx.VERTICAL)
 
@@ -46,7 +47,7 @@ class ChangeDepthDialog(wx.Dialog):
 
         vbox.Add(pnl, proportion=1,
                  flag=wx.ALL | wx.EXPAND, border=5)
-        vbox.Add(hbox2, flag=wx.ALIGN_CENTER|wx.TOP|wx.BOTTOM, border=10)
+        vbox.Add(hbox2, flag=wx.ALIGN_CENTER | wx.TOP | wx.BOTTOM, border=10)
 
         self.SetSizer(vbox)
 
@@ -55,3 +56,39 @@ class ChangeDepthDialog(wx.Dialog):
 
     def on_close(self, e: wx.Event):
         self.Destroy()
+
+
+class Example(wx.Frame):
+
+    def __init__(self, *args, **kwargs):
+        super(Example, self).__init__(*args, **kwargs)
+
+        self.init_ui()
+
+    def init_ui(self):
+        tb: wx.ToolBar = self.CreateToolBar()
+        tb.AddTool(toolId=wx.ID_ANY, label='', bitmap=wx.Bitmap('color.png'))
+
+        tb.Realize()
+
+        tb.Bind(wx.EVT_TOOL, self.on_change_depth)
+
+        self.SetSize((350, 250))
+        self.SetTitle('Custom dialog')
+        self.Center()
+
+    def on_change_depth(self, e):
+        cbDialog = ChangeDepthDialog(None, title='Change Color Depth')
+        cbDialog.ShowModal()
+        cbDialog.Destroy()
+
+
+def main():
+    app = wx.App()
+    ex = Example(None)
+    ex.Show()
+    app.MainLoop()
+
+
+if __name__ == '__main__':
+    main()
