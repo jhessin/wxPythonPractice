@@ -39,6 +39,8 @@ class ChangeDepthDialog(wx.Dialog):
         hbox1.Add(wx.TextCtrl(pnl), flag=wx.LEFT, border=5)
         sbs.Add(hbox1)
 
+        pnl.SetSizer(sbs)
+
         hbox2 = wx.BoxSizer(wx.HORIZONTAL)
         ok_button = wx.Button(self, label='Ok')
         close_button = wx.Button(self, label='Close')
@@ -77,7 +79,7 @@ class Example(wx.Frame):
         self.SetTitle('Custom dialog')
         self.Center()
 
-    def on_change_depth(self, e):
+    def on_change_depth(self, e: wx.Event):
         cbDialog = ChangeDepthDialog(None, title='Change Color Depth')
         cbDialog.ShowModal()
         cbDialog.Destroy()
