@@ -36,8 +36,8 @@ class Example(wx.Frame):
         size_x, size_y = self.GetClientSize()
         dc.SetDeviceOrigin(math.floor(size_x / 2), math.floor(size_y / 2))
 
-        points = (((0, 85), (75, 75), (100, 10), (125, 75), (200, 85),
-                   (150, 125), (160, 190), (100, 150), (40, 190), (50, 125)))
+        points = ((wx.Point(0, 85), wx.Point(75, 75), wx.Point(100, 10), wx.Point(125, 75), wx.Point(200, 85),
+                   wx.Point(150, 125), wx.Point(160, 190), wx.Point(100, 150), wx.Point(40, 190), wx.Point(50, 125)))
 
         region = wx.Region(points)
         dc.SetDeviceClippingRegion(region)
@@ -46,9 +46,9 @@ class Example(wx.Frame):
         angle = 0
 
         while angle < 2 * pi:
-            x = radius * cos(angle)
-            y = radius * sin(angle)
-            dc.DrawLine((0, 0), (x, y))
+            x = math.floor(radius * cos(angle))
+            y = math.floor(radius * sin(angle))
+            dc.DrawLine(wx.Point(0, 0), wx.Point(x, y))
             angle = angle + 2 * pi / 360
 
         dc.DestroyClippingRegion()

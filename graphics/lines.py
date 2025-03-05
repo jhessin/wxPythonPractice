@@ -30,15 +30,16 @@ class Example(wx.Frame):
     def on_paint(self, e: wx.PaintEvent):
         dc = wx.PaintDC(self)
         size_x, size_y = self.GetClientSize()
+        dc.SetPen(wx.Pen('#0000ff'))
         dc.SetDeviceOrigin(int(size_x / 2), int(size_y / 2))
 
         radius = hypot(size_x / 2, size_y / 2)
         angle = 0
 
         while angle < 2 * pi:
-            x = radius * cos(angle)
-            y = radius * sin(angle)
-            dc.DrawLine((0, 0), (x, y))
+            x = int(radius * cos(angle))
+            y = int(radius * sin(angle))
+            dc.DrawLine(wx.Point(0, 0), wx.Point(x, y))
             angle = angle + 2 * pi / 360
 
 
