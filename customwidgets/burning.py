@@ -11,7 +11,6 @@ last edited: May 2018
 """
 
 import wx
-from wx import Slider
 
 
 class Burning(wx.Panel):
