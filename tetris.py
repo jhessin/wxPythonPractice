@@ -151,6 +151,8 @@ class Board(wx.Panel):
 
         keycode = event.GetKeyCode()
 
+        print(keycode)
+
         if keycode == ord('P') or keycode == ord('p'):
             self.pause()
             return
@@ -448,7 +450,7 @@ class Shape(object):
 
 
 def main():
-    app = wx.App()
+    app = wx.App(redirect=True)
     ex = Tetris(None)
     ex.Show()
     app.MainLoop()
